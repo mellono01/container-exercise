@@ -251,7 +251,7 @@ Line by line:
 | `EXPOSE 3000` | Documents the listening port | Still just metadata |
 | `CMD ["node", "server.js"]` | The process to run when a container starts | JSON *exec* form, so Node becomes PID 1 and receives `SIGTERM` properly |
 
-**The caching trick.** Docker caches each layer. If an instruction's inputs haven't changed, it reuses the cached layer and skips the work. Because `COPY package*.json` comes before `RUN npm install`, editing `app.js` doesn't invalidate the install layer — so your rebuild takes a second instead of a minute. If you wrote `COPY . .` first, every source edit would reinstall every dependency. You'll see this for yourself in Step 5.
+**The caching trick.** Docker caches each layer. If an instruction's inputs haven't changed, it reuses the cached layer and skips the work. Because `COPY package*.json` comes before `RUN npm install`, editing `app.js` doesn't invalidate the install layer — so your rebuild takes a second instead of a minute. If you wrote `COPY . .` first, every source edit would reinstall every dependency.
 
 ### Step 3. Build and run
 
