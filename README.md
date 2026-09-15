@@ -73,6 +73,7 @@ Best Practices
 - **Permissions** - The container should be configured to run as a non-root user. Don’t install or run commands using sudo.
 
 <br/>
+<br/>
 
 # Exercise 1 — Containerise a static HTML page
 
@@ -139,16 +140,16 @@ docker image ls lab-site
 ### Step 4. Run it
 
 ```
-docker run --rm -p 8080:80 --name my-site lab-site:1.0
+docker run --rm -p 8000:80 --name my-site lab-site:1.0
 ```
 
 Breaking that down:
 
 - `--rm` — delete the container when it stops, so you don't accumulate dead containers.
-- `-p 8080:80` — **`hostPort:containerPort`**. Traffic to port 8080 on your laptop is forwarded to port 80 inside the container. These two numbers are independent; 8080 is simply a port that's usually free.
+- `-p 8000:80` — **`hostPort:containerPort`**. Traffic to port 8000 on your laptop is forwarded to port 80 inside the container. These two numbers are independent; 8000 is simply a port that's usually free.
 - `--name my-site` — a friendly name instead of a random one.
 
-Open **http://localhost:8080**.
+Open **http://localhost:8000**.
 
 Your terminal is now attached to nginx's logs. Reload the page and watch the access log lines appear. Press `Ctrl+C` to stop the container.
 
@@ -164,13 +165,13 @@ This is the point of the exercise: **the inside and the outside are separate wor
 
 Press `Ctrl+C` to stop the container.
 
-### Step 6. Run it in the background and look around
+### Step 6. Run it in the background
 When you are testing containers locally it can be helpful having logs displayed inline, but in a production environment you do not want this. Using `-d` in the command detaches (runs in the background). 
 
 Try using `-d` when you start your container then check the logs.
 
 ```
-docker run -d --rm -p 8080:80 --name my-site lab-site:1.0
+docker run -d --rm -p 8000:80 --name my-site lab-site:1.0
 docker ps
 docker logs my-site
 ```
@@ -191,8 +192,8 @@ To stop a container running in detached mode:
 ```
 docker stop my-site
 ```
-
----
+<br/>
+<br/>
 
 # Exercise 2 — Containerise a Node.js single-page app
 
@@ -259,7 +260,7 @@ docker build -t lab-spa:1.0 .
 docker run --rm -d -p 3000:3000 --name my-spa lab-spa:1.0
 ```
 
-Open **http://localhost:3000** and click through the nav. The **Status** page fetches `/healthz` from inside the container — note the `hostname`, which is the container's ID.
+Open **http://localhost:3000**. The **Status** page fetches `/healthz` from inside the container — note the `hostname`, which is the container's ID.
 
 Stop the container:
 
@@ -304,7 +305,7 @@ docker stop my-spa
 ---
 
 ## Finished early? 
-Try containerising the app you coded with AI earlier in the day. In addition to following the steps in Exercises 1 and 2, try to implement the following.
+Try containerising the app you coded with AI earlier in the day. Additionally, try to implement the following:
 
 **Add a `.dockerignore`.**
 
