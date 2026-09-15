@@ -1,0 +1,12 @@
+# Rename this file to `.dockerignore` (Stretch Goal B).
+# Anything listed here is excluded from the build context — it is never
+# sent to the Docker daemon and never lands in your image.
+
+node_modules
+npm-debug.log
+.git
+.gitignore
+.DS_Store
+Dockerfile
+README.md
+*.md

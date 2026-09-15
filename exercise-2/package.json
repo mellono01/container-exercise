@@ -1,0 +1,16 @@
+{
+  "name": "container-lab-spa",
+  "version": "1.0.0",
+  "description": "A tiny single-page app served by Express. No database, no API calls.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
